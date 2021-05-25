@@ -16,6 +16,8 @@ cd horizon_highway_slam/
 sudo docker build -t horizon_highway_slam .
 ```
 
+> the 1st and 3rd command you run them only the first time that you do it. Next times you can skip those 2 commands.
+
 > While you are doing this procedure, **create a folder called "shared_dir" at home directory**. Docker and Host can share files through this folder (for example a rosbag file).Now go back to terminal and continue with the next command:
 
 
