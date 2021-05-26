@@ -38,8 +38,8 @@ Step 3: **Open a second terminal** and run your bagfile using the rviz of the ho
 rosrun rviz rviz -d horizon_highway_slam/rviz_cfg/horizon_highway_slam.rviz
 ```
 
-<<<<<<< HEAD
->Now the visualisation should start.
+
+> Now the visualisation should start.
 
 
 Step 4: **Open a third terminal** and save a new ".bag", this time containing the topic "**/laser_cloud_surround**" and give a new name. So, simultaneusly with the other terminals, run this command:
@@ -50,7 +50,7 @@ rosbag record /laser_cloud_surround -O my_new_bag_file.bag
 > Now you have a new ".bag" file with the elements that you need in order to build your map.
 
 
-Step5: **Open a fourth terminal** in order to convert your new ".bag" file in to .pcd format. Simply run the command:
+Step 5: **Open a fourth terminal** in order to convert your new ".bag" file in to .pcd format. Simply run the command:
 
 ```sh
 rosrun pcl_ros bag_to_pcd my_new_bag_file.bag /laser_cloud_surround /home/konstantinos/Desktop/
@@ -59,10 +59,9 @@ rosrun pcl_ros bag_to_pcd my_new_bag_file.bag /laser_cloud_surround /home/konsta
 ```sh
 pcl_viewer <path_of_your_pcd_files>
 ```
->and see the visualisation of a .pcd file.
+> and see the visualisation of a .pcd file.
 
->If you want to see the complete model, simply select them all, write *"pcl_viewer"* at your terminal and then drug and drop all .pcd files together.
+> if you want to see the **complete model**, simply select them all, write *"pcl_viewer"* at your terminal and then drug and drop **all .pcd files together**.
 
-=======
-Now the visualisation should start.
->>>>>>> f1486e4e032b0192586ead88d90a20d17fe5e570
+![Screenshot from 2021-05-26 12-02-09](https://user-images.githubusercontent.com/70270581/119633405-62be5500-be1a-11eb-8ac2-bc086b8e312c.png)
+
