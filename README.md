@@ -16,6 +16,8 @@ cd horizon_highway_slam/
 sudo docker build -t horizon_highway_slam .
 ```
 
+> the 1st and 3rd command you run them only the first time that you do it. Next times you can skip those 2 commands.
+
 > While you are doing this procedure, **create a folder called "shared_dir" at home directory**. Docker and Host can share files through this folder (for example a rosbag file).Now go back to terminal and continue with the next command:
 
 
@@ -36,6 +38,7 @@ Step 3: **Open a second terminal** and run your bagfile using the rviz of the ho
 rosrun rviz rviz -d horizon_highway_slam/rviz_cfg/horizon_highway_slam.rviz
 ```
 
+<<<<<<< HEAD
 >Now the visualisation should start.
 
 
@@ -60,3 +63,6 @@ pcl_viewer <path_of_your_pcd_files>
 
 >If you want to see the complete model, simply select them all, write *"pcl_viewer"* at your terminal and then drug and drop all .pcd files together.
 
+=======
+Now the visualisation should start.
+>>>>>>> f1486e4e032b0192586ead88d90a20d17fe5e570
