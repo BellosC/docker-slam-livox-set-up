@@ -138,3 +138,5 @@ pcl_viewer path1.pcd, path2.pcd, path3.pcd etc
 > you can also select all .pcd files with ctrl+A and drug them to terminal after the command *pcl_viewer *
 
 >The final result will be something like this:
+>![Screenshot from 2021-05-26 20-10-14](https://user-images.githubusercontent.com/70270581/119703203-fc0f5a80-be5e-11eb-9019-cc47a9f0a184.png)
+
