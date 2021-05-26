@@ -65,3 +65,76 @@ pcl_viewer <path_of_your_pcd_files>
 
 ![Screenshot from 2021-05-26 12-02-09](https://user-images.githubusercontent.com/70270581/119633405-62be5500-be1a-11eb-8ac2-bc086b8e312c.png)
 
+--------------------------------------------------------
+--------------------------------------------------------
+--------------------------------------------------------
+# Create your own rosbag:
+
+Step 1: Connect livox LIDAR
+
+Step 2: Use **livox_ros_driver** package in order to start scanning. So, open **terminal #1** and type:
+
+```sh 
+roslaunch livox_ros_driver livox_lidar.launch
+```
+Step 3:Open **terminal #2** and listen and record all available topics (-a) and also give a name to you ".bag" file (-O) by typing the command:
+
+```sh
+rosbag record -a -O name_of_my_bag.bag
+```
+
+Step 4: Run both terminal tabs smultaneously.At home folder you will find your bag file.
+
+---------------------------------------------------------
+---------------------------------------------------------
+---------------------------------------------------------
+# Run your own rosbag file through the slam package and create a 3D model:
+
+Step 1: Open **terminal #1** and type:
+
+```sh
+cd horizon_highway_slam/
+```
+```sh
+sudo ./run.sh
+```
+> once you enter docker terminal type:
+```sh
+roslaunch horizon_highway_slam horizon_highway_slam.launch BagName:=name_of_my_bag.bag IMU:=0
+```
+> **carefull**, this time we set the parameter **IMU:=0** to zero. I am not sure yet why it works only when i do this but in the future i will figure it out. The instruction of the Horizon_HIghway_slam are these:
+
+> IMU: choose IMU information fusion strategy, there are 3 mode:
+
+> 0 - whithout using IMU information, pure lidar SLAM.
+
+> 1 - using gyroscope integration angle to eliminate the rotation distortion of the lidar point cloud in each frame.
+
+> 2 - tightly coupling IMU and lidar information to improve SLAM effects. Requires a careful initialization process, and still in beta stage.
+
+Step 2: Open **terminal #2** and type:
+
+```sh
+rosrun rviz rviz -d horizon_highway_slam/rviz_cfg/horizon_highway_slam.rviz
+```
+Step 3: Open **terminal #3** and and record the topic **/laser_cloud_surround** and name it (-O):
+
+```sh
+rosbag record /laser_cloud_surround -O my_final_bag.bag
+```
+
+Step 4: Run all terminals together and when the procedure ends close them. Now you will find your "my_final_bag.bag" file at your home folder.
+
+Step 5: Convert your **.bag file to .pcd file(s)**. In the command you have to type the name of your .bag file, the topic that you want to use in order to create the .pcd file and also the path that your .pcd file(s) will be saved.So, open a new terminal and type:
+
+```sh
+rosrun pcl_ros bag_to_pcd my_final_bag.bag /laser_cloud_surround /home/konstantinos/Desktop
+```
+Step 6: You can open your .pcd files all together with CloudCompare and examine your work or you can open a terminal and type this:
+
+```sh
+pcl_viewer path1.pcd, path2.pcd, path3.pcd etc
+```
+> you can also select all .pcd files with ctrl+A and drug them to terminal after the command *pcl_viewer *
+
+>The final result will be something like this:
