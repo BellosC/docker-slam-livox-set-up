@@ -71,6 +71,10 @@ pcl_viewer <path_of_your_pcd_files>
 # Create your own rosbag:
 
 Step 1: Connect livox LIDAR
+> if you use raspberry pi (headless) run the following command in order to set your static ip:
+```sh
+sudo ifconfig eth0 192.168.1.50
+```
 
 Step 2: Use **livox_ros_driver** package in order to start scanning. So, open **terminal #1** and type:
 
